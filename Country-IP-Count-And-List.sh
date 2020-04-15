@@ -48,6 +48,9 @@ fi
 # sorts geo results by country
 sort -k 1 ipinfo.txt >> sortedip.txt
 
+# 
+uniq -c sortedip.txt >> Phlashko-Country-IP-Count-And-List/Count-IP-To-Dest.txt
+
 # takes out duplicate IPs
 cat sortedip.txt | uniq | awk '{print $1}' >> sortedip2.txt
 
@@ -77,7 +80,7 @@ cut -d"," -f2- combine.csv >> combine1.csv
 { echo 'UNIQ IP COUNT, COUNTRY, IPS'; cat combine1.csv; } > Phlashko-Country-IP-Count-And-List/results.csv
 
 # announces script ran
-echo -e '\n'$(pwd)'/Phlashko-Country-IP-Count-And-List/results.csv to be opened in an EXCEL like program.\n\n'$(pwd)'/Phlashko-Country-IP-Count-And-List/results.txt is the terminal quick text view\n'
+echo -e '\n'$(pwd)'/Phlashko-Country-IP-Count-And-List/results.csv to be opened in an EXCEL like program.\n\n'$(pwd)'/Phlashko-Country-IP-Count-And-List/results.txt is the terminal quick text view\n\n'$(pwd)'/Phlashko-Country-IP-Count-And-List/Count-IP-To-Dest.txt is the total packets a specific ip was talking to the destination\n'
 
 # removes temp files
 rm combine* 2> /dev/null
